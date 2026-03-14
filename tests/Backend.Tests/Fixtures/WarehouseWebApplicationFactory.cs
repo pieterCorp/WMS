@@ -125,7 +125,7 @@ public class WarehouseWebApplicationFactory : WebApplicationFactory<Program>
         context.SaveChanges();
     }
 
-    public override System.Net.Http.HttpClient CreateClient(Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryClientOptions options)
+    public new System.Net.Http.HttpClient CreateClient(Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryClientOptions options)
     {
         // Re-seed DB for each client to ensure test isolation between tests
         using var scope = Services.CreateScope();
@@ -136,7 +136,7 @@ public class WarehouseWebApplicationFactory : WebApplicationFactory<Program>
         return base.CreateClient(options);
     }
 
-    public override System.Net.Http.HttpClient CreateClient()
+    public new System.Net.Http.HttpClient CreateClient()
     {
         return CreateClient(new Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryClientOptions());
     }
