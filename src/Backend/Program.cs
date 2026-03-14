@@ -6,6 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container
 builder.Services.AddControllers().AddJsonOptions(options => { options.JsonSerializerOptions.PropertyNamingPolicy = null; options.JsonSerializerOptions.PropertyNameCaseInsensitive = true; });
 builder.Services.AddOpenApi();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<Backend.Services.PickService>();
 builder.Services.AddScoped<Backend.Services.InventoryService>();
 builder.Services.AddScoped<Backend.Services.OrderService>();
@@ -38,8 +40,11 @@ if (!app.Environment.IsEnvironment("Testing"))
 }
 
 // Configure the HTTP request pipeline
-if (app.Environment.IsDevelopment())
+if (!app.Environment.IsEnvironment("Testing"))
 {
+    // Expose OpenAPI/Swagger when not running tests so the UI can be used for local development and QA
+    app.UseSwagger();
+    app.UseSwaggerUI();
     app.MapOpenApi();
 }
 
