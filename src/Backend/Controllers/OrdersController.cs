@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore;
 namespace Backend.Controllers;
 
 [ApiController]
+[Route("orders")]
+[Route("api/orders")]
 [Route("api/[controller]")]
 public class OrdersController : ControllerBase
 {
@@ -16,13 +18,13 @@ public class OrdersController : ControllerBase
         _context = context;
     }
 
-    [HttpGet("{id}")]
-    public async Task<IActionResult> GetOrder(int id)
+    [HttpGet("{orderId}")]
+    public async Task<IActionResult> GetOrder(string orderId)
     {
         var order = await _context.Orders
             .Include(o => o.Items)
             .ThenInclude(oi => oi.Product)
-            .FirstOrDefaultAsync(o => o.Id == id);
+            .FirstOrDefaultAsync(o => o.OrderId == orderId);
 
         if (order == null)
             return NotFound();
