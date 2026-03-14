@@ -1,0 +1,24 @@
+Repository push attempt failed because no writable remote was available from this environment.
+
+What was done:
+- Created push-to-remote.ps1 helper at the repo root.
+- Attempted to push to https://github.com/pieter/WMS.git but repository not found.
+- Generated a git bundle at: C:\Users\pieter\Desktop\WMS\..\WMS.bundle (one level up from repo root). Use this to transport the repository to another machine or user.
+
+Options you can choose when back at your machine:
+1) Provide a remote URL now and run: .\push-to-remote.ps1 -RemoteUrl "https://github.com/username/repo.git"
+2) Create a GitHub repo locally (requires gh):
+   - Install GitHub CLI: https://cli.github.com/
+   - Run: gh auth login && gh repo create WMS --public --source=. --remote=origin --push --confirm
+3) Manually push via SSH/personal access token:
+   - git remote add origin <REMOTE_URL>
+   - git push -u origin HEAD
+
+How to use the bundle (if you want to move the repo to another machine):
+- On the target machine, run:
+    mkdir WMS && cd WMS
+    git init
+    git remote add origin <REMOTE_URL>   # optional, set remote before pushing
+    git pull ../WMS.bundle HEAD  # or git clone ../WMS.bundle -b master WMS
+
+If you want me to try again with a specific remote URL, paste it here or run the push-to-remote script with the -RemoteUrl argument.

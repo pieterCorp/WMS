@@ -28,23 +28,23 @@ namespace Backend.Controllers
                 .ThenInclude(oi => oi.Product)
                 .FirstOrDefaultAsync(o => o.OrderId == request.OrderId);
             if (order == null)
-                return BadRequest("Order not found");
+                return NotFound();
 
             // 2. Find order item by barcode
             var orderItem = order.Items.FirstOrDefault(oi => oi.Product != null && oi.Product.Barcode == request.ProductBarcode);
             if (orderItem == null)
-                return BadRequest("Product barcode does not match order item");
+                return BadRequest();
 
             // 3. Validate rack/slot
             var inventory = await _context.Inventory
                 .Include(i => i.Location)
                 .FirstOrDefaultAsync(i => i.ProductId == orderItem.ProductId && i.Location != null && i.Location.Rack == request.Rack && i.Location.Slot == request.Slot);
             if (inventory == null)
-                return BadRequest("Rack/slot does not match expected location");
+                return BadRequest();
 
             // 4. Reduce inventory
             if (inventory.Quantity <= 0)
-                return BadRequest("No inventory at location");
+                return BadRequest();
             inventory.Quantity -= 1;
 
             // 5. Increase picked quantity

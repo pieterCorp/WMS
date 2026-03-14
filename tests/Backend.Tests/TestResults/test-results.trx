@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="5354bfbf-9c9c-474a-9359-e4bf866dfbaf" name="pieter@ZBOOK-PIETER 2026-03-14 21:48:25" runUser="ZBOOK-PIETER\pieter" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-03-14T21:48:25.2956597+01:00" queuing="2026-03-14T21:48:25.2956603+01:00" start="2026-03-14T21:48:22.6989413+01:00" finish="2026-03-14T21:48:25.3910370+01:00" />
+  <TestSettings name="default" id="dc89a355-f02d-4565-831d-61d630bd86fa">
+    <Deployment runDeploymentRoot="pieter_ZBOOK-PIETER_2026-03-14_21_48_25" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="0f5c2c73-a1ed-4ff3-a8ee-6653f67016a6" testId="ee24ef35-381a-67b1-9b09-fdd4688b17f5" testName="Backend.Tests.Unit.PickServiceTests.ConfirmPick_WithValidData_UpdatesInventory" computerName="ZBOOK-PIETER" duration="00:00:00.0122650" startTime="2026-03-14T21:48:25.2949815+01:00" endTime="2026-03-14T21:48:25.2949823+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0f5c2c73-a1ed-4ff3-a8ee-6653f67016a6" />
+    <UnitTestResult executionId="896230e1-20cc-4207-a611-b8f1cab27758" testId="272679f1-720e-c7c2-90c6-f6ff6ebab449" testName="Backend.Tests.Unit.PickServiceTests.ConfirmPick_WithInsufficientInventory_ThrowsException" computerName="ZBOOK-PIETER" duration="00:00:00.0044733" startTime="2026-03-14T21:48:25.2995882+01:00" endTime="2026-03-14T21:48:25.2995885+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="896230e1-20cc-4207-a611-b8f1cab27758" />
+    <UnitTestResult executionId="e35318bc-c518-49f9-8d87-ba4b86f6dbeb" testId="fd04f251-8926-5c9e-b20d-6bc231177d10" testName="Backend.Tests.Unit.InventoryServiceTests.GetInventory_WithValidProductAndLocation_ReturnsQuantity" computerName="ZBOOK-PIETER" duration="00:00:00.0129646" startTime="2026-03-14T21:48:25.2614508+01:00" endTime="2026-03-14T21:48:25.2614509+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e35318bc-c518-49f9-8d87-ba4b86f6dbeb" />
+    <UnitTestResult executionId="3b913610-476e-4d00-8d22-aeaae04b7a2b" testId="8d0415db-2bec-dc66-4c18-ea11df46aa3b" testName="Backend.Tests.Integration.PickIntegrationTests.ConfirmPick_WithInvalidBarcode_ReturnsBadRequest" computerName="ZBOOK-PIETER" duration="00:00:01.0771204" startTime="2026-03-14T21:48:25.2434459+01:00" endTime="2026-03-14T21:48:25.2434464+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3b913610-476e-4d00-8d22-aeaae04b7a2b">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: BadRequest&#xD;
+Actual:   NotFound</Message>
+          <StackTrace>   at Backend.Tests.Integration.PickIntegrationTests.ConfirmPick_WithInvalidBarcode_ReturnsBadRequest() in C:\Users\pieter\Desktop\WMS\tests\Backend.Tests\Integration\OrderAndPickTests.cs:line 136&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="5606f42a-3c9d-4bbc-8080-37546f13c4ff" testId="fc9409e4-28a6-902e-f3e3-17785b27149f" testName="Backend.Tests.Integration.OrderIntegrationTests.GetOrderById_WithMultipleItems_ReturnsAllItems" computerName="ZBOOK-PIETER" duration="00:00:00.0034971" startTime="2026-03-14T21:48:25.2469234+01:00" endTime="2026-03-14T21:48:25.2469236+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5606f42a-3c9d-4bbc-8080-37546f13c4ff">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: OK&#xD;
+Actual:   NotFound</Message>
+          <StackTrace>   at Backend.Tests.Integration.OrderIntegrationTests.GetOrderById_WithMultipleItems_ReturnsAllItems() in C:\Users\pieter\Desktop\WMS\tests\Backend.Tests\Integration\OrderAndPickTests.cs:line 54&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="09d70742-44f6-4845-a210-be3dd515bc0e" testId="91cdab9d-d90b-64fb-8edd-a30c591ac9da" testName="Backend.Tests.Integration.PickIntegrationTests.ConfirmPick_WithMultiplePicks_DecrementsCumulatively" computerName="ZBOOK-PIETER" duration="00:00:00.0028375" startTime="2026-03-14T21:48:25.2477502+01:00" endTime="2026-03-14T21:48:25.2477505+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="09d70742-44f6-4845-a210-be3dd515bc0e">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: OK&#xD;
+Actual:   NotFound</Message>
+          <StackTrace>   at Backend.Tests.Integration.PickIntegrationTests.ConfirmPick_WithMultiplePicks_DecrementsCumulatively() in C:\Users\pieter\Desktop\WMS\tests\Backend.Tests\Integration\OrderAndPickTests.cs:line 177&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="063764ac-ebb0-44ca-8822-d8528f4fdbca" testId="0021fa5a-8fe1-377c-8662-788abf1f39da" testName="Backend.Tests.Integration.OrderIntegrationTests.GetOrderById_WithNonExistentId_Returns404" computerName="ZBOOK-PIETER" duration="00:00:00.0035790" startTime="2026-03-14T21:48:25.2451512+01:00" endTime="2026-03-14T21:48:25.2451513+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="063764ac-ebb0-44ca-8822-d8528f4fdbca" />
+    <UnitTestResult executionId="73482eb9-42dd-4844-b32e-85e6986f6bcb" testId="cf752cc5-6b09-cb8b-5b76-acf2a1cf99f7" testName="Backend.Tests.Unit.OrderServiceTests.GetOrderById_WithValidId_ReturnsOrder" computerName="ZBOOK-PIETER" duration="00:00:01.1055569" startTime="2026-03-14T21:48:25.2184425+01:00" endTime="2026-03-14T21:48:25.2191737+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="73482eb9-42dd-4844-b32e-85e6986f6bcb" />
+    <UnitTestResult executionId="074ef513-8513-49fc-ab2d-ee778ca746ac" testId="7d1b5510-dfd0-7c78-0dbc-8a542f3b5814" testName="Backend.Tests.Integration.PickIntegrationTests.ConfirmPick_WithInvalidOrderId_ReturnsBadRequest" computerName="ZBOOK-PIETER" duration="00:00:00.0034947" startTime="2026-03-14T21:48:25.2447097+01:00" endTime="2026-03-14T21:48:25.2447098+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="074ef513-8513-49fc-ab2d-ee778ca746ac" />
+    <UnitTestResult executionId="202085bf-e795-4518-8f89-4727400a00bf" testId="982891c5-5c18-2d7d-53b5-0caa17a2b3ec" testName="Backend.Tests.Integration.OrderIntegrationTests.GetOrderById_WithValidId_ReturnsOrderWithItems" computerName="ZBOOK-PIETER" duration="00:00:01.0770211" startTime="2026-03-14T21:48:25.2444860+01:00" endTime="2026-03-14T21:48:25.2444862+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="202085bf-e795-4518-8f89-4727400a00bf">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: OK&#xD;
+Actual:   NotFound</Message>
+          <StackTrace>   at Backend.Tests.Integration.OrderIntegrationTests.GetOrderById_WithValidId_ReturnsOrderWithItems() in C:\Users\pieter\Desktop\WMS\tests\Backend.Tests\Integration\OrderAndPickTests.cs:line 25&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="eafcc35a-3ba1-4dff-b0b1-6a1dd277748e" testId="c05af4cd-531d-3119-6b32-2f00bb214e74" testName="Backend.Tests.Unit.OrderServiceTests.GetOrderById_WithNonExistentId_ReturnsNull" computerName="ZBOOK-PIETER" duration="00:00:00.0032127" startTime="2026-03-14T21:48:25.2310051+01:00" endTime="2026-03-14T21:48:25.2310052+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="eafcc35a-3ba1-4dff-b0b1-6a1dd277748e" />
+    <UnitTestResult executionId="abf57bd0-6dd8-4dd9-a304-cce3f3b6d448" testId="526afec3-8a16-847b-c74b-4100f2959599" testName="Backend.Tests.Integration.PickIntegrationTests.ConfirmPick_WithValidData_ReducesInventory" computerName="ZBOOK-PIETER" duration="00:00:00.0023183" startTime="2026-03-14T21:48:25.2613034+01:00" endTime="2026-03-14T21:48:25.2613042+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="abf57bd0-6dd8-4dd9-a304-cce3f3b6d448">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: OK&#xD;
+Actual:   NotFound</Message>
+          <StackTrace>   at Backend.Tests.Integration.PickIntegrationTests.ConfirmPick_WithValidData_ReducesInventory() in C:\Users\pieter\Desktop\WMS\tests\Backend.Tests\Integration\OrderAndPickTests.cs:line 89&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="30ab2f06-ce91-4d23-873f-d6ce95d4674b" testId="d6fcd854-4578-afc1-89e6-303ae13d6a6a" testName="Backend.Tests.Unit.InventoryServiceTests.ReduceInventory_WithValidData_DecrementsQuantity" computerName="ZBOOK-PIETER" duration="00:00:01.1327221" startTime="2026-03-14T21:48:25.2613772+01:00" endTime="2026-03-14T21:48:25.2613773+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="30ab2f06-ce91-4d23-873f-d6ce95d4674b" />
+    <UnitTestResult executionId="7e65f4aa-d7e9-420c-978a-b818bd128e8f" testId="03b13bae-df60-6bd4-f720-49f5c266144e" testName="Backend.Tests.Unit.PickServiceTests.ConfirmPick_LogsScanEvent" computerName="ZBOOK-PIETER" duration="00:00:01.1739767" startTime="2026-03-14T21:48:25.2824707+01:00" endTime="2026-03-14T21:48:25.2824714+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7e65f4aa-d7e9-420c-978a-b818bd128e8f" />
+    <UnitTestResult executionId="30d4a2f6-a10f-4381-a811-69c1e36c9ed2" testId="43b68388-6eaa-719c-525b-ffdbe28cc031" testName="Backend.Tests.Integration.PickIntegrationTests.ConfirmPick_WithInvalidRack_ReturnsBadRequest" computerName="ZBOOK-PIETER" duration="00:00:00.0037451" startTime="2026-03-14T21:48:25.2461033+01:00" endTime="2026-03-14T21:48:25.2461035+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="30d4a2f6-a10f-4381-a811-69c1e36c9ed2">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: BadRequest&#xD;
+Actual:   NotFound</Message>
+          <StackTrace>   at Backend.Tests.Integration.PickIntegrationTests.ConfirmPick_WithInvalidRack_ReturnsBadRequest() in C:\Users\pieter\Desktop\WMS\tests\Backend.Tests\Integration\OrderAndPickTests.cs:line 155&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Backend.Tests.Integration.PickIntegrationTests.ConfirmPick_WithMultiplePicks_DecrementsCumulatively" storage="c:\users\pieter\desktop\wms\tests\backend.tests\bin\debug\net10.0\backend.tests.dll" id="91cdab9d-d90b-64fb-8edd-a30c591ac9da">
+      <Execution id="09d70742-44f6-4845-a210-be3dd515bc0e" />
+      <TestMethod codeBase="C:\Users\pieter\Desktop\WMS\tests\Backend.Tests\bin\Debug\net10.0\Backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Backend.Tests.Integration.PickIntegrationTests" name="ConfirmPick_WithMultiplePicks_DecrementsCumulatively" />
+    </UnitTest>
+    <UnitTest name="Backend.Tests.Integration.OrderIntegrationTests.GetOrderById_WithMultipleItems_ReturnsAllItems" storage="c:\users\pieter\desktop\wms\tests\backend.tests\bin\debug\net10.0\backend.tests.dll" id="fc9409e4-28a6-902e-f3e3-17785b27149f">
+      <Execution id="5606f42a-3c9d-4bbc-8080-37546f13c4ff" />
+      <TestMethod codeBase="C:\Users\pieter\Desktop\WMS\tests\Backend.Tests\bin\Debug\net10.0\Backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Backend.Tests.Integration.OrderIntegrationTests" name="GetOrderById_WithMultipleItems_ReturnsAllItems" />
+    </UnitTest>
+    <UnitTest name="Backend.Tests.Integration.OrderIntegrationTests.GetOrderById_WithNonExistentId_Returns404" storage="c:\users\pieter\desktop\wms\tests\backend.tests\bin\debug\net10.0\backend.tests.dll" id="0021fa5a-8fe1-377c-8662-788abf1f39da">
+      <Execution id="063764ac-ebb0-44ca-8822-d8528f4fdbca" />
+      <TestMethod codeBase="C:\Users\pieter\Desktop\WMS\tests\Backend.Tests\bin\Debug\net10.0\Backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Backend.Tests.Integration.OrderIntegrationTests" name="GetOrderById_WithNonExistentId_Returns404" />
+    </UnitTest>
+    <UnitTest name="Backend.Tests.Unit.PickServiceTests.ConfirmPick_WithValidData_UpdatesInventory" storage="c:\users\pieter\desktop\wms\tests\backend.tests\bin\debug\net10.0\backend.tests.dll" id="ee24ef35-381a-67b1-9b09-fdd4688b17f5">
+      <Execution id="0f5c2c73-a1ed-4ff3-a8ee-6653f67016a6" />
+      <TestMethod codeBase="C:\Users\pieter\Desktop\WMS\tests\Backend.Tests\bin\Debug\net10.0\Backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Backend.Tests.Unit.PickServiceTests" name="ConfirmPick_WithValidData_UpdatesInventory" />
+    </UnitTest>
+    <UnitTest name="Backend.Tests.Unit.OrderServiceTests.GetOrderById_WithValidId_ReturnsOrder" storage="c:\users\pieter\desktop\wms\tests\backend.tests\bin\debug\net10.0\backend.tests.dll" id="cf752cc5-6b09-cb8b-5b76-acf2a1cf99f7">
+      <Execution id="73482eb9-42dd-4844-b32e-85e6986f6bcb" />
+      <TestMethod codeBase="C:\Users\pieter\Desktop\WMS\tests\Backend.Tests\bin\Debug\net10.0\Backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Backend.Tests.Unit.OrderServiceTests" name="GetOrderById_WithValidId_ReturnsOrder" />
+    </UnitTest>
+    <UnitTest name="Backend.Tests.Unit.InventoryServiceTests.GetInventory_WithValidProductAndLocation_ReturnsQuantity" storage="c:\users\pieter\desktop\wms\tests\backend.tests\bin\debug\net10.0\backend.tests.dll" id="fd04f251-8926-5c9e-b20d-6bc231177d10">
+      <Execution id="e35318bc-c518-49f9-8d87-ba4b86f6dbeb" />
+      <TestMethod codeBase="C:\Users\pieter\Desktop\WMS\tests\Backend.Tests\bin\Debug\net10.0\Backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Backend.Tests.Unit.InventoryServiceTests" name="GetInventory_WithValidProductAndLocation_ReturnsQuantity" />
+    </UnitTest>
+    <UnitTest name="Backend.Tests.Unit.PickServiceTests.ConfirmPick_LogsScanEvent" storage="c:\users\pieter\desktop\wms\tests\backend.tests\bin\debug\net10.0\backend.tests.dll" id="03b13bae-df60-6bd4-f720-49f5c266144e">
+      <Execution id="7e65f4aa-d7e9-420c-978a-b818bd128e8f" />
+      <TestMethod codeBase="C:\Users\pieter\Desktop\WMS\tests\Backend.Tests\bin\Debug\net10.0\Backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Backend.Tests.Unit.PickServiceTests" name="ConfirmPick_LogsScanEvent" />
+    </UnitTest>
+    <UnitTest name="Backend.Tests.Integration.PickIntegrationTests.ConfirmPick_WithInvalidOrderId_ReturnsBadRequest" storage="c:\users\pieter\desktop\wms\tests\backend.tests\bin\debug\net10.0\backend.tests.dll" id="7d1b5510-dfd0-7c78-0dbc-8a542f3b5814">
+      <Execution id="074ef513-8513-49fc-ab2d-ee778ca746ac" />
+      <TestMethod codeBase="C:\Users\pieter\Desktop\WMS\tests\Backend.Tests\bin\Debug\net10.0\Backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Backend.Tests.Integration.PickIntegrationTests" name="ConfirmPick_WithInvalidOrderId_ReturnsBadRequest" />
+    </UnitTest>
+    <UnitTest name="Backend.Tests.Integration.PickIntegrationTests.ConfirmPick_WithInvalidRack_ReturnsBadRequest" storage="c:\users\pieter\desktop\wms\tests\backend.tests\bin\debug\net10.0\backend.tests.dll" id="43b68388-6eaa-719c-525b-ffdbe28cc031">
+      <Execution id="30d4a2f6-a10f-4381-a811-69c1e36c9ed2" />
+      <TestMethod codeBase="C:\Users\pieter\Desktop\WMS\tests\Backend.Tests\bin\Debug\net10.0\Backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Backend.Tests.Integration.PickIntegrationTests" name="ConfirmPick_WithInvalidRack_ReturnsBadRequest" />
+    </UnitTest>
+    <UnitTest name="Backend.Tests.Integration.PickIntegrationTests.ConfirmPick_WithInvalidBarcode_ReturnsBadRequest" storage="c:\users\pieter\desktop\wms\tests\backend.tests\bin\debug\net10.0\backend.tests.dll" id="8d0415db-2bec-dc66-4c18-ea11df46aa3b">
+      <Execution id="3b913610-476e-4d00-8d22-aeaae04b7a2b" />
+      <TestMethod codeBase="C:\Users\pieter\Desktop\WMS\tests\Backend.Tests\bin\Debug\net10.0\Backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Backend.Tests.Integration.PickIntegrationTests" name="ConfirmPick_WithInvalidBarcode_ReturnsBadRequest" />
+    </UnitTest>
+    <UnitTest name="Backend.Tests.Integration.OrderIntegrationTests.GetOrderById_WithValidId_ReturnsOrderWithItems" storage="c:\users\pieter\desktop\wms\tests\backend.tests\bin\debug\net10.0\backend.tests.dll" id="982891c5-5c18-2d7d-53b5-0caa17a2b3ec">
+      <Execution id="202085bf-e795-4518-8f89-4727400a00bf" />
+      <TestMethod codeBase="C:\Users\pieter\Desktop\WMS\tests\Backend.Tests\bin\Debug\net10.0\Backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Backend.Tests.Integration.OrderIntegrationTests" name="GetOrderById_WithValidId_ReturnsOrderWithItems" />
+    </UnitTest>
+    <UnitTest name="Backend.Tests.Unit.PickServiceTests.ConfirmPick_WithInsufficientInventory_ThrowsException" storage="c:\users\pieter\desktop\wms\tests\backend.tests\bin\debug\net10.0\backend.tests.dll" id="272679f1-720e-c7c2-90c6-f6ff6ebab449">
+      <Execution id="896230e1-20cc-4207-a611-b8f1cab27758" />
+      <TestMethod codeBase="C:\Users\pieter\Desktop\WMS\tests\Backend.Tests\bin\Debug\net10.0\Backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Backend.Tests.Unit.PickServiceTests" name="ConfirmPick_WithInsufficientInventory_ThrowsException" />
+    </UnitTest>
+    <UnitTest name="Backend.Tests.Integration.PickIntegrationTests.ConfirmPick_WithValidData_ReducesInventory" storage="c:\users\pieter\desktop\wms\tests\backend.tests\bin\debug\net10.0\backend.tests.dll" id="526afec3-8a16-847b-c74b-4100f2959599">
+      <Execution id="abf57bd0-6dd8-4dd9-a304-cce3f3b6d448" />
+      <TestMethod codeBase="C:\Users\pieter\Desktop\WMS\tests\Backend.Tests\bin\Debug\net10.0\Backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Backend.Tests.Integration.PickIntegrationTests" name="ConfirmPick_WithValidData_ReducesInventory" />
+    </UnitTest>
+    <UnitTest name="Backend.Tests.Unit.OrderServiceTests.GetOrderById_WithNonExistentId_ReturnsNull" storage="c:\users\pieter\desktop\wms\tests\backend.tests\bin\debug\net10.0\backend.tests.dll" id="c05af4cd-531d-3119-6b32-2f00bb214e74">
+      <Execution id="eafcc35a-3ba1-4dff-b0b1-6a1dd277748e" />
+      <TestMethod codeBase="C:\Users\pieter\Desktop\WMS\tests\Backend.Tests\bin\Debug\net10.0\Backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Backend.Tests.Unit.OrderServiceTests" name="GetOrderById_WithNonExistentId_ReturnsNull" />
+    </UnitTest>
+    <UnitTest name="Backend.Tests.Unit.InventoryServiceTests.ReduceInventory_WithValidData_DecrementsQuantity" storage="c:\users\pieter\desktop\wms\tests\backend.tests\bin\debug\net10.0\backend.tests.dll" id="d6fcd854-4578-afc1-89e6-303ae13d6a6a">
+      <Execution id="30ab2f06-ce91-4d23-873f-d6ce95d4674b" />
+      <TestMethod codeBase="C:\Users\pieter\Desktop\WMS\tests\Backend.Tests\bin\Debug\net10.0\Backend.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Backend.Tests.Unit.InventoryServiceTests" name="ReduceInventory_WithValidData_DecrementsQuantity" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="ee24ef35-381a-67b1-9b09-fdd4688b17f5" executionId="0f5c2c73-a1ed-4ff3-a8ee-6653f67016a6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="272679f1-720e-c7c2-90c6-f6ff6ebab449" executionId="896230e1-20cc-4207-a611-b8f1cab27758" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fd04f251-8926-5c9e-b20d-6bc231177d10" executionId="e35318bc-c518-49f9-8d87-ba4b86f6dbeb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8d0415db-2bec-dc66-4c18-ea11df46aa3b" executionId="3b913610-476e-4d00-8d22-aeaae04b7a2b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fc9409e4-28a6-902e-f3e3-17785b27149f" executionId="5606f42a-3c9d-4bbc-8080-37546f13c4ff" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="91cdab9d-d90b-64fb-8edd-a30c591ac9da" executionId="09d70742-44f6-4845-a210-be3dd515bc0e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0021fa5a-8fe1-377c-8662-788abf1f39da" executionId="063764ac-ebb0-44ca-8822-d8528f4fdbca" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cf752cc5-6b09-cb8b-5b76-acf2a1cf99f7" executionId="73482eb9-42dd-4844-b32e-85e6986f6bcb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7d1b5510-dfd0-7c78-0dbc-8a542f3b5814" executionId="074ef513-8513-49fc-ab2d-ee778ca746ac" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="982891c5-5c18-2d7d-53b5-0caa17a2b3ec" executionId="202085bf-e795-4518-8f89-4727400a00bf" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c05af4cd-531d-3119-6b32-2f00bb214e74" executionId="eafcc35a-3ba1-4dff-b0b1-6a1dd277748e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="526afec3-8a16-847b-c74b-4100f2959599" executionId="abf57bd0-6dd8-4dd9-a304-cce3f3b6d448" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d6fcd854-4578-afc1-89e6-303ae13d6a6a" executionId="30ab2f06-ce91-4d23-873f-d6ce95d4674b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="03b13bae-df60-6bd4-f720-49f5c266144e" executionId="7e65f4aa-d7e9-420c-978a-b818bd128e8f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="43b68388-6eaa-719c-525b-ffdbe28cc031" executionId="30d4a2f6-a10f-4381-a811-69c1e36c9ed2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="15" executed="15" passed="9" failed="6" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.5.4.1+b9eacec401 (64-bit .NET 10.0.1)&#xD;
+[xUnit.net 00:00:00.20]   Discovering: Backend.Tests&#xD;
+[xUnit.net 00:00:00.29]   Discovered:  Backend.Tests&#xD;
+[xUnit.net 00:00:00.30]   Starting:    Backend.Tests&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 0 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 0 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 10 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 10 entities to in-memory store.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Testing&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: C:\Users\pieter\Desktop\WMS\src\Backend&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Testing&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: C:\Users\pieter\Desktop\WMS\src\Backend&#xD;
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]&#xD;
+      Failed to determine the https port for redirect.&#xD;
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]&#xD;
+      Failed to determine the https port for redirect.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+[xUnit.net 00:00:01.51]       Assert.Equal() Failure: Values differ&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+[xUnit.net 00:00:01.51]       Expected: BadRequest&#xD;
+[xUnit.net 00:00:01.51]       Actual:   NotFound&#xD;
+[xUnit.net 00:00:01.51]       Stack Trace:&#xD;
+[xUnit.net 00:00:01.51]         C:\Users\pieter\Desktop\WMS\tests\Backend.Tests\Integration\OrderAndPickTests.cs(136,0): at Backend.Tests.Integration.PickIntegrationTests.ConfirmPick_WithInvalidBarcode_ReturnsBadRequest()&#xD;
+[xUnit.net 00:00:01.51]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:01.51]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:01.51]       Expected: OK&#xD;
+[xUnit.net 00:00:01.51]       Actual:   NotFound&#xD;
+[xUnit.net 00:00:01.51]       Stack Trace:&#xD;
+[xUnit.net 00:00:01.51]         C:\Users\pieter\Desktop\WMS\tests\Backend.Tests\Integration\OrderAndPickTests.cs(25,0): at Backend.Tests.Integration.OrderIntegrationTests.GetOrderById_WithValidId_ReturnsOrderWithItems()&#xD;
+[xUnit.net 00:00:01.51]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:01.51]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:01.51]       Expected: BadRequest&#xD;
+[xUnit.net 00:00:01.51]       Actual:   NotFound&#xD;
+[xUnit.net 00:00:01.52]       Stack Trace:&#xD;
+[xUnit.net 00:00:01.52]         C:\Users\pieter\Desktop\WMS\tests\Backend.Tests\Integration\OrderAndPickTests.cs(155,0): at Backend.Tests.Integration.PickIntegrationTests.ConfirmPick_WithInvalidRack_ReturnsBadRequest()&#xD;
+[xUnit.net 00:00:01.52]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:01.52]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:01.52]       Expected: OK&#xD;
+[xUnit.net 00:00:01.52]       Actual:   NotFound&#xD;
+[xUnit.net 00:00:01.52]       Stack Trace:&#xD;
+[xUnit.net 00:00:01.52]         C:\Users\pieter\Desktop\WMS\tests\Backend.Tests\Integration\OrderAndPickTests.cs(54,0): at Backend.Tests.Integration.OrderIntegrationTests.GetOrderById_WithMultipleItems_ReturnsAllItems()&#xD;
+[xUnit.net 00:00:01.52]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:01.52]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:01.52]       Expected: OK&#xD;
+[xUnit.net 00:00:01.52]       Actual:   NotFound&#xD;
+[xUnit.net 00:00:01.52]       Stack Trace:&#xD;
+[xUnit.net 00:00:01.52]         C:\Users\pieter\Desktop\WMS\tests\Backend.Tests\Integration\OrderAndPickTests.cs(177,0): at Backend.Tests.Integration.PickIntegrationTests.ConfirmPick_WithMultiplePicks_DecrementsCumulatively()&#xD;
+[xUnit.net 00:00:01.52]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:01.53]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:01.53]       Expected: OK&#xD;
+[xUnit.net 00:00:01.53]       Actual:   NotFound&#xD;
+[xUnit.net 00:00:01.53]       Stack Trace:&#xD;
+[xUnit.net 00:00:01.53]         C:\Users\pieter\Desktop\WMS\tests\Backend.Tests\Integration\OrderAndPickTests.cs(89,0): at Backend.Tests.Integration.PickIntegrationTests.ConfirmPick_WithValidData_ReducesInventory()&#xD;
+[xUnit.net 00:00:01.53]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:01.57]   Finished:    Backend.Tests&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="ZBOOK-PIETER" outcome="Error" timestamp="2026-03-14T21:48:25.2381787+01:00">
+        <Text>[xUnit.net 00:00:01.51]     Backend.Tests.Integration.PickIntegrationTests.ConfirmPick_WithInvalidBarcode_ReturnsBadRequest [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="ZBOOK-PIETER" outcome="Error" timestamp="2026-03-14T21:48:25.2442757+01:00">
+        <Text>[xUnit.net 00:00:01.51]     Backend.Tests.Integration.OrderIntegrationTests.GetOrderById_WithValidId_ReturnsOrderWithItems [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="ZBOOK-PIETER" outcome="Error" timestamp="2026-03-14T21:48:25.2456925+01:00">
+        <Text>[xUnit.net 00:00:01.51]     Backend.Tests.Integration.PickIntegrationTests.ConfirmPick_WithInvalidRack_ReturnsBadRequest [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="ZBOOK-PIETER" outcome="Error" timestamp="2026-03-14T21:48:25.2465528+01:00">
+        <Text>[xUnit.net 00:00:01.52]     Backend.Tests.Integration.OrderIntegrationTests.GetOrderById_WithMultipleItems_ReturnsAllItems [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="ZBOOK-PIETER" outcome="Error" timestamp="2026-03-14T21:48:25.2473603+01:00">
+        <Text>[xUnit.net 00:00:01.52]     Backend.Tests.Integration.PickIntegrationTests.ConfirmPick_WithMultiplePicks_DecrementsCumulatively [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="ZBOOK-PIETER" outcome="Error" timestamp="2026-03-14T21:48:25.3160901+01:00">
+        <Text>[xUnit.net 00:00:01.53]     Backend.Tests.Integration.PickIntegrationTests.ConfirmPick_WithValidData_ReducesInventory [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

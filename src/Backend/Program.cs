@@ -6,12 +6,23 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
+builder.Services.AddScoped<Backend.Services.PickService>();
+builder.Services.AddScoped<Backend.Services.InventoryService>();
+builder.Services.AddScoped<Backend.Services.OrderService>();
 
-// Register DbContext
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") 
-    ?? "Server=(localdb)\\mssqllocaldb;Database=WarehouseMvp;Trusted_Connection=true;";
-builder.Services.AddDbContext<WarehouseDbContext>(options =>
-    options.UseSqlServer(connectionString));
+// Register DbContext - use InMemory for Testing, SqlServer for others
+if (builder.Environment.IsEnvironment("Testing"))
+{
+    builder.Services.AddDbContext<WarehouseDbContext>(options =>
+        options.UseInMemoryDatabase("WarehouseTestDb"));
+}
+else
+{
+    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") 
+        ?? "Server=(localdb)\\mssqllocaldb;Database=WarehouseMvp;Trusted_Connection=true;";
+    builder.Services.AddDbContext<WarehouseDbContext>(options =>
+        options.UseSqlServer(connectionString));
+}
 
 var app = builder.Build();
 
