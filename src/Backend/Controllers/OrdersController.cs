@@ -2,6 +2,7 @@ using Backend.Data;
 using Backend.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Backend.DTOs;
 
 namespace Backend.Controllers;
 
@@ -12,32 +13,43 @@ namespace Backend.Controllers;
 public class OrdersController : ControllerBase
 {
     private readonly WarehouseDbContext _context;
+    private readonly ILogger<OrdersController> _logger;
 
-    public OrdersController(WarehouseDbContext context)
+    public OrdersController(WarehouseDbContext context, ILogger<OrdersController> logger)
     {
         _context = context;
+        _logger = logger;
     }
 
     [HttpGet("{orderId}")]
     public async Task<IActionResult> GetOrder(string orderId)
     {
-        var order = await _context.Orders
-            .Include(o => o.Items)
-            .ThenInclude(oi => oi.Product)
-            .FirstOrDefaultAsync(o => o.OrderId == orderId);
+        var orders = await _context.Orders.ToListAsync();
+        _logger.LogInformation($"Order count: {orders.Count}, OrderIds: [{string.Join(",", orders.Select(o => o.OrderId))}]");
+
+        var order = orders
+            .Where(o => o.OrderId == orderId)
+            .Select(o => _context.Orders
+                .Include(x => x.Items)
+                .ThenInclude(oi => oi.Product)
+                .FirstOrDefault(x => x.OrderId == o.OrderId))
+            .FirstOrDefault();
 
         if (order == null)
-            return NotFound();
-
-        var response = new
         {
-            orderId = order.OrderId,
-            items = order.Items.Select(item => new
+            _logger.LogWarning($"Order not found for orderId: {orderId}");
+            return NotFound();
+        }
+
+        var response = new OrderResponse
+        {
+            OrderId = order.OrderId,
+            Items = order.Items.Select(item => new OrderItemResponse
             {
-                product = item.Product?.Name ?? "Unknown",
-                sku = item.Product?.Sku ?? "Unknown",
-                location = GetLocationFromOrderItem(item),
-                quantity = item.Quantity
+                Product = item.Product?.Name ?? "Unknown",
+                Sku = item.Product?.Sku ?? "Unknown",
+                Location = GetLocationFromOrderItem(item),
+                Quantity = item.Quantity
             }).ToList()
         };
 
