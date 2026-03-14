@@ -12,7 +12,6 @@ namespace Backend.Controllers
     public class PickController : ControllerBase
     {
         private readonly Microsoft.Extensions.Logging.ILogger<PickController> _logger;
-    {
         private readonly WarehouseDbContext _context;
 
         public PickController(WarehouseDbContext context, Microsoft.Extensions.Logging.ILogger<PickController> logger)
