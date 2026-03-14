@@ -12,7 +12,6 @@ var envName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? bu
 if (envName != "Testing")
 {
     builder.Services.AddEndpointsApiExplorer();
-    builder.Services.AddSwaggerGen();
 }
 
 // Business services
@@ -44,8 +43,7 @@ if (envName != "Testing")
 
 if (envName != "Testing")
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    app.MapOpenApi();
 }
 
 app.UseHttpsRedirection();
