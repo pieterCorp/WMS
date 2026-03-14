@@ -2,12 +2,14 @@ using Backend.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-n// JSON serializer options (preserve PascalCase for compatibility with tests)
+
+// JSON serializer options (preserve PascalCase for compatibility with tests)
 builder.Services.AddControllers().AddJsonOptions(options => { options.JsonSerializerOptions.PropertyNamingPolicy = null; options.JsonSerializerOptions.PropertyNameCaseInsensitive = true; });
 
 // Determine environment early from environment variable so tests can set it before WebApplicationFactory runs
 var envName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? builder.Environment.EnvironmentName;
-nif (envName != "Testing")
+
+if (envName != "Testing")
 {
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
