@@ -1,0 +1,259 @@
+DIGITAL TWIN WAREHOUSE – MINIMAL MVP SPEC
+
+Goal
+
+Build a minimal warehouse picking system where workers use a smartphone to:
+
+- Scan an order
+- Receive a pick list with locations
+- Scan rack and product
+- Update the central inventory database
+
+The system must keep the digital warehouse state synchronized with the real warehouse.
+
+SYSTEM ARCHITECTURE
+
+Mobile Client (Unity)
+|
+| REST API
+v
+ASP.NET Core Backend
+|
+v
+SQL Server Database
+
+The backend is the single source of truth for warehouse state.
+
+TECHNOLOGY STACK
+
+Backend
+
+- ASP.NET Core
+- Entity Framework Core
+- SQL Server
+- Swagger (API documentation)
+
+Mobile Client
+
+- Unity (Android/iOS)
+- ZXing.Net (QR / barcode scanning)
+
+Optional (future)
+
+- Blender for warehouse models
+- Unity 3D warehouse visualization
+
+CORE CONCEPTS
+
+- Products: Physical items identified by barcode.
+- Locations: Warehouse storage positions.
+- Inventory: Quantity of each product at a location.
+- Orders: Customer orders that require picking.
+- Scan Events: Logged actions from workers.
+
+WAREHOUSE LOCATION MODEL
+
+Warehouse hierarchy:
+
+Warehouse
+→ Aisle
+→ Rack
+→ Slot
+
+Example location:
+
+Aisle A
+Rack 7
+Slot 3
+
+Example rack QR code:
+RACK-A7
+
+Product barcode example:
+5401234567890
+
+DATABASE TABLES (MINIMAL)
+
+Products
+
+- Id
+- Sku
+- Name
+- Barcode
+
+Locations
+
+- Id
+- Aisle
+- Rack
+- Slot
+- X
+- Y
+- Z
+
+Inventory
+
+- ProductId
+- LocationId
+- Quantity
+
+Orders
+
+- Id
+- Status
+- CreatedAt
+
+OrderItems
+
+- OrderId
+- ProductId
+- Quantity
+- PickedQuantity
+
+ScanEvents
+
+- Id
+- Worker
+- ProductId
+- Rack
+- Slot
+- Timestamp
+- Action
+
+API ENDPOINTS (MVP)
+
+Get Order
+
+GET /orders/{id}
+
+Response example:
+
+{
+"orderId": "ORD-10452",
+"items": [
+{
+"product": "USB Cable",
+"sku": "8872",
+"location": "A7-3",
+"quantity": 2
+}
+]
+}
+
+Confirm Pick
+
+POST /pick
+
+Body example:
+
+{
+"orderId": "ORD-10452",
+"productBarcode": "5401234567890",
+"rack": "A7",
+"slot": "3"
+}
+
+Server responsibilities:
+
+- validate rack
+- validate product
+- reduce inventory
+- update order progress
+- store scan event
+
+MOBILE APP WORKFLOW
+
+Step 1 – Scan Order
+Worker scans QR code on the order.
+
+Example:
+ORD-10452
+
+App requests order data from API.
+
+Step 2 – Show Pick List
+App displays required items and their locations.
+
+Example:
+Rack A7 Slot 3 – USB Cable x2
+
+Step 3 – Scan Rack
+Worker scans rack QR code.
+
+System verifies correct location.
+
+Step 4 – Scan Product
+Worker scans product barcode.
+
+App sends pick confirmation to API.
+
+Step 5 – Update Inventory
+Server updates inventory and order progress.
+
+UNITY APP STRUCTURE
+
+MobileApp
+├ API
+│ └ WarehouseAPI.cs
+├ Scanning
+│ └ BarcodeScanner.cs
+├ UI
+│ ├ OrderScreen
+│ ├ PickListScreen
+│ └ ScanScreen
+└ Warehouse3D (future)
+└ WarehouseRenderer.cs
+
+MVP DEVELOPMENT PHASES
+
+Phase 1 – Backend Foundation
+
+- Create ASP.NET Core project
+- Create SQL Server database
+- Implement core tables
+- Implement basic API endpoints
+
+Goal:
+Working backend that manages orders and inventory.
+
+Phase 2 – Mobile App
+
+- Create Unity mobile project
+- Connect to API
+- Implement order scanning
+- Display pick list
+
+Goal:
+User can retrieve pick instructions.
+
+Phase 3 – Scanning
+
+- Integrate ZXing barcode scanning
+- Scan rack QR codes
+- Scan product barcodes
+
+Goal:
+Worker can complete full picking flow.
+
+Phase 4 – Inventory Updates
+
+- Implement pick confirmation
+- Update database
+- Log scan events
+
+Goal:
+Real warehouse stays synchronized with database.
+
+MVP SUCCESS CRITERIA
+
+The MVP is successful if a worker can:
+
+- Scan an order
+- Receive pick instructions
+- Scan rack
+- Scan product
+- Update inventory
+
+At this stage the system works without 3D visualization.
+
+3D warehouse rendering can be added later without changing the core system.
