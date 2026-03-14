@@ -1,4 +1,4 @@
-namespace Backend.DTOs
+namespace Backend.Business.DTOs
 {
     public class OrderResponse
     {

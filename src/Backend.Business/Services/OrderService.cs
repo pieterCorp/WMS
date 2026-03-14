@@ -1,10 +1,10 @@
 using Backend.Data;
-using Backend.Models;
+using Backend.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using System.Linq;
 
-namespace Backend.Services
+namespace Backend.Business.Services
 {
     public class OrderService
     {

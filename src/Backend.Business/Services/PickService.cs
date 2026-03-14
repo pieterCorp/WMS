@@ -1,11 +1,11 @@
 using Backend.Data;
-using Backend.Models;
+using Backend.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Backend.Services
+namespace Backend.Business.Services
 {
     public class PickService
     {
