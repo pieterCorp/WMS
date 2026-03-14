@@ -26,6 +26,17 @@ else
 
 var app = builder.Build();
 
+// Seed database with test data when running (skip during Testing)
+if (!app.Environment.IsEnvironment("Testing"))
+{
+    using var scope = app.Services.CreateScope();
+    var db = scope.ServiceProvider.GetRequiredService<WarehouseDbContext>();
+    // Apply any pending migrations
+    db.Database.Migrate();
+    // Seed sample data for development
+    Backend.Data.DbSeeder.Seed(db);
+}
+
 // Configure the HTTP request pipeline
 if (app.Environment.IsDevelopment())
 {
