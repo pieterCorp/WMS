@@ -1,0 +1,52 @@
+using Backend.Data;
+using Microsoft.EntityFrameworkCore;
+
+var builder = WebApplication.CreateBuilder(args);
+n// JSON serializer options (preserve PascalCase for compatibility with tests)
+builder.Services.AddControllers().AddJsonOptions(options => { options.JsonSerializerOptions.PropertyNamingPolicy = null; options.JsonSerializerOptions.PropertyNameCaseInsensitive = true; });
+
+// Determine environment early from environment variable so tests can set it before WebApplicationFactory runs
+var envName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? builder.Environment.EnvironmentName;
+nif (envName != "Testing")
+{
+    builder.Services.AddEndpointsApiExplorer();
+    builder.Services.AddSwaggerGen();
+}
+
+// Business services
+builder.Services.AddScoped<Backend.Business.Services.PickService>();
+builder.Services.AddScoped<Backend.Business.Services.InventoryService>();
+builder.Services.AddScoped<Backend.Business.Services.OrderService>();
+
+// DbContext registration
+if (envName == "Testing")
+{
+    builder.Services.AddDbContext<WarehouseDbContext>(options => options.UseInMemoryDatabase("WarehouseTestDb"));
+}
+else
+{
+    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? "Server=(localdb)\\mssqllocaldb;Database=WarehouseMvp;Trusted_Connection=true;";
+    builder.Services.AddDbContext<WarehouseDbContext>(options => options.UseSqlServer(connectionString));
+}
+
+var app = builder.Build();
+
+// Seed and migrate when not in testing
+if (envName != "Testing")
+{
+    using var scope = app.Services.CreateScope();
+    var db = scope.ServiceProvider.GetRequiredService<WarehouseDbContext>();
+    db.Database.Migrate();
+    Backend.Data.DbSeeder.Seed(db);
+}
+
+if (envName != "Testing")
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+app.UseHttpsRedirection();
+app.UseAuthorization();
+app.MapControllers();
+app.Run();
