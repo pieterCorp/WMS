@@ -5,12 +5,16 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container
 builder.Services.AddControllers().AddJsonOptions(options => { options.JsonSerializerOptions.PropertyNamingPolicy = null; options.JsonSerializerOptions.PropertyNameCaseInsensitive = true; });
-builder.Services.AddOpenApi();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-builder.Services.AddScoped<Backend.Services.PickService>();
-builder.Services.AddScoped<Backend.Services.InventoryService>();
-builder.Services.AddScoped<Backend.Services.OrderService>();
+// Only add Swagger/OpenAPI services when not running tests to avoid test-time assembly issues
+if (!builder.Environment.IsEnvironment("Testing"))
+{
+    builder.Services.AddOpenApi();
+    builder.Services.AddEndpointsApiExplorer();
+}
+
+builder.Services.AddScoped<Backend.Business.Services.PickService>();
+builder.Services.AddScoped<Backend.Business.Services.InventoryService>();
+builder.Services.AddScoped<Backend.Business.Services.OrderService>();
 
 // Register DbContext - use InMemory for Testing, SqlServer for others
 if (builder.Environment.IsEnvironment("Testing"))
@@ -42,9 +46,8 @@ if (!app.Environment.IsEnvironment("Testing"))
 // Configure the HTTP request pipeline
 if (!app.Environment.IsEnvironment("Testing"))
 {
-    // Expose OpenAPI/Swagger when not running tests so the UI can be used for local development and QA
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    // Expose OpenAPI when not running tests so the UI can be used for local development and QA
+    // MapOpenApi uses Microsoft.AspNetCore.OpenApi to generate an OpenAPI document.
     app.MapOpenApi();
 }
 

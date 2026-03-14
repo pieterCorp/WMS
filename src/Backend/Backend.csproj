@@ -14,7 +14,12 @@
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="10.0.5" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Backend.Business\Backend.Business.csproj" />
+    <ProjectReference Include="..\Backend.Data\Backend.Data.csproj" />
   </ItemGroup>
 
 </Project>

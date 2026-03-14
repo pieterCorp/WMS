@@ -1,8 +1,8 @@
 namespace Backend.Tests.Unit;
 
 using Backend.Data;
-using Backend.Models;
-using Backend.Services;
+using Backend.Data.Models;
+using Backend.Business.Services;
 using Microsoft.EntityFrameworkCore;
 using Xunit;
 

@@ -1,7 +1,7 @@
 namespace Backend.Tests.Integration.Fixtures;
 
 using Backend.Data;
-using Backend.Models;
+using Backend.Data.Models;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
