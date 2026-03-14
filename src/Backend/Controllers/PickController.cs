@@ -11,11 +11,14 @@ namespace Backend.Controllers
 [Route("api/pick")]
     public class PickController : ControllerBase
     {
+        private readonly Microsoft.Extensions.Logging.ILogger<PickController> _logger;
+    {
         private readonly WarehouseDbContext _context;
 
-        public PickController(WarehouseDbContext context)
+        public PickController(WarehouseDbContext context, Microsoft.Extensions.Logging.ILogger<PickController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         [HttpPost]
@@ -43,9 +46,11 @@ namespace Backend.Controllers
                 return BadRequest();
 
             // 4. Reduce inventory
+            _logger.LogInformation("Inventory before decrement: ProductId={ProductId}, LocationId={LocationId}, Quantity={Quantity}", inventory.ProductId, inventory.LocationId, inventory.Quantity);
             if (inventory.Quantity <= 0)
                 return BadRequest();
             inventory.Quantity -= 1;
+            _logger.LogInformation("Inventory after decrement: ProductId={ProductId}, LocationId={LocationId}, Quantity={Quantity}", inventory.ProductId, inventory.LocationId, inventory.Quantity);
 
             // 5. Increase picked quantity
             orderItem.PickedQuantity += 1;
