@@ -124,4 +124,20 @@ public class WarehouseWebApplicationFactory : WebApplicationFactory<Program>
 
         context.SaveChanges();
     }
+
+    public override System.Net.Http.HttpClient CreateClient(Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryClientOptions options)
+    {
+        // Re-seed DB for each client to ensure test isolation between tests
+        using var scope = Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<WarehouseDbContext>();
+        db.Database.EnsureDeleted();
+        db.Database.EnsureCreated();
+        SeedTestData(db);
+        return base.CreateClient(options);
+    }
+
+    public override System.Net.Http.HttpClient CreateClient()
+    {
+        return CreateClient(new Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryClientOptions());
+    }
 }
