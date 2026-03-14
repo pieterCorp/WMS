@@ -476,3 +476,16 @@ C:\Users\pieter\Desktop\WMS\tests\Backend.Tests\obj\Debug\net10.0\refint\Backend
 C:\Users\pieter\Desktop\WMS\tests\Backend.Tests\obj\Debug\net10.0\Backend.Tests.pdb
 C:\Users\pieter\Desktop\WMS\tests\Backend.Tests\obj\Debug\net10.0\Backend.Tests.genruntimeconfig.cache
 C:\Users\pieter\Desktop\WMS\tests\Backend.Tests\obj\Debug\net10.0\ref\Backend.Tests.dll
+C:\Users\pieter\Desktop\WMS\tests\Backend.Tests\bin\Debug\net10.0\Backend.Business.dll
+C:\Users\pieter\Desktop\WMS\tests\Backend.Tests\bin\Debug\net10.0\Backend.Data.dll
+C:\Users\pieter\Desktop\WMS\tests\Backend.Tests\bin\Debug\net10.0\Backend.Business.pdb
+C:\Users\pieter\Desktop\WMS\tests\Backend.Tests\bin\Debug\net10.0\Backend.Data.pdb
+C:\Users\pieter\Desktop\WMS\tests\Backend.Tests\bin\Debug\net10.0\Backend.Api.deps.json
+C:\Users\pieter\Desktop\WMS\tests\Backend.Tests\bin\Debug\net10.0\Backend.Api.runtimeconfig.json
+C:\Users\pieter\Desktop\WMS\tests\Backend.Tests\bin\Debug\net10.0\Backend.Api.staticwebassets.endpoints.json
+C:\Users\pieter\Desktop\WMS\tests\Backend.Tests\bin\Debug\net10.0\Backend.Api.exe
+C:\Users\pieter\Desktop\WMS\tests\Backend.Tests\bin\Debug\net10.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\pieter\Desktop\WMS\tests\Backend.Tests\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\pieter\Desktop\WMS\tests\Backend.Tests\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\pieter\Desktop\WMS\tests\Backend.Tests\bin\Debug\net10.0\Backend.Api.dll
+C:\Users\pieter\Desktop\WMS\tests\Backend.Tests\bin\Debug\net10.0\Backend.Api.pdb

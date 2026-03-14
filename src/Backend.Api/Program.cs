@@ -14,10 +14,10 @@ if (envName != "Testing")
     builder.Services.AddEndpointsApiExplorer();
 }
 
-// Business services
-builder.Services.AddScoped<Backend.Business.Services.PickService>();
-builder.Services.AddScoped<Backend.Business.Services.InventoryService>();
-builder.Services.AddScoped<Backend.Business.Services.OrderService>();
+// Business services (register by interface)
+builder.Services.AddScoped<Backend.Business.Services.IOrderService, Backend.Business.Services.OrderService>();
+builder.Services.AddScoped<Backend.Business.Services.IPickService, Backend.Business.Services.PickService>();
+builder.Services.AddScoped<Backend.Business.Services.IInventoryService, Backend.Business.Services.InventoryService>();
 
 // DbContext registration
 if (envName == "Testing")

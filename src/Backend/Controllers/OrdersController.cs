@@ -1,8 +1,8 @@
 using Backend.Data;
-using Backend.Models;
+using Backend.Data.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Backend.DTOs;
+using Backend.Business.DTOs;
 
 namespace Backend.Controllers;
 

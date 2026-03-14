@@ -5,9 +5,16 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 
+using Backend.Data;
+using Backend.Data.Models;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
+
 namespace Backend.Business.Services
 {
-    public class PickService
+    public class PickService : IPickService
     {
         private readonly WarehouseDbContext _context;
         public PickService(WarehouseDbContext context)

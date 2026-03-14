@@ -6,12 +6,14 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-public class WarehouseWebApplicationFactory : WebApplicationFactory<Program>
+public class WarehouseWebApplicationFactory : WebApplicationFactory<Backend.Api.Program>
 {
     private readonly string _dbInstanceName;
 
     public WarehouseWebApplicationFactory()
     {
+        // Ensure the test environment is set early so Program.cs can read it before WebApplicationFactory runs
+        Environment.SetEnvironmentVariable("ASPNETCORE_ENVIRONMENT", "Testing");
         // Create unique database name for each factory instance to avoid conflicts
         _dbInstanceName = $"WarehouseTestDb_{Guid.NewGuid()}";
     }

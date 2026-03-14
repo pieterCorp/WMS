@@ -1,6 +1,5 @@
-using Backend.Data;
+using Backend.Business.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Api.Controllers
 {
@@ -9,23 +8,19 @@ namespace Backend.Api.Controllers
     [Route("api/inventory")]
     public class InventoryController : ControllerBase
     {
-        private readonly WarehouseDbContext _context;
+        private readonly IInventoryService _inventoryService;
 
-        public InventoryController(WarehouseDbContext context)
+        public InventoryController(IInventoryService inventoryService)
         {
-            _context = context;
+            _inventoryService = inventoryService;
         }
 
         [HttpGet("product/{productId}/location/{locationId}")]
         public async Task<IActionResult> GetInventory(int productId, int locationId)
         {
-            var inv = await _context.Inventory
-                .FirstOrDefaultAsync(i => i.ProductId == productId && i.LocationId == locationId);
-
-            if (inv == null)
-                return NotFound();
-
-            return Ok(new { Quantity = inv.Quantity });
+            var qty = await _inventoryService.GetInventory(productId, locationId);
+            if (qty == 0) return NotFound();
+            return Ok(new { Quantity = qty });
         }
     }
 }

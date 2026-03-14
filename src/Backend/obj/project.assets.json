@@ -1073,6 +1073,34 @@
         "build": {
           "buildTransitive/net8.0/_._": {}
         }
+      },
+      "Backend.Business/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "dependencies": {
+          "Backend.Data": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "10.0.5"
+        },
+        "compile": {
+          "bin/placeholder/Backend.Business.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Backend.Business.dll": {}
+        }
+      },
+      "Backend.Data/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.InMemory": "10.0.5",
+          "Microsoft.EntityFrameworkCore.SqlServer": "10.0.5"
+        },
+        "compile": {
+          "bin/placeholder/Backend.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Backend.Data.dll": {}
+        }
       }
     }
   },
@@ -3142,10 +3170,22 @@
         "system.security.cryptography.protecteddata.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "Backend.Business/1.0.0": {
+      "type": "project",
+      "path": "../Backend.Business/Backend.Business.csproj",
+      "msbuildProject": "../Backend.Business/Backend.Business.csproj"
+    },
+    "Backend.Data/1.0.0": {
+      "type": "project",
+      "path": "../Backend.Data/Backend.Data.csproj",
+      "msbuildProject": "../Backend.Data/Backend.Data.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net10.0": [
+      "Backend.Business >= 1.0.0",
+      "Backend.Data >= 1.0.0",
       "Microsoft.AspNetCore.OpenApi >= 10.0.1",
       "Microsoft.EntityFrameworkCore.Design >= 10.0.5",
       "Microsoft.EntityFrameworkCore.InMemory >= 10.0.5",
@@ -3185,7 +3225,14 @@
       "frameworks": {
         "net10.0": {
           "targetAlias": "net10.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\pieter\\Desktop\\WMS\\src\\Backend.Business\\Backend.Business.csproj": {
+              "projectPath": "C:\\Users\\pieter\\Desktop\\WMS\\src\\Backend.Business\\Backend.Business.csproj"
+            },
+            "C:\\Users\\pieter\\Desktop\\WMS\\src\\Backend.Data\\Backend.Data.csproj": {
+              "projectPath": "C:\\Users\\pieter\\Desktop\\WMS\\src\\Backend.Data\\Backend.Data.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

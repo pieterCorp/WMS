@@ -1,5 +1,26 @@
 [
   {
+    "ContainingType": "Backend.Controllers.InventoryController",
+    "Method": "GetInventory",
+    "RelativePath": "api/inventory/product/{productId}/location/{locationId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "locationId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Backend.Controllers.OrdersController",
     "Method": "GetOrder",
     "RelativePath": "api/orders/{orderId}",
@@ -42,6 +63,27 @@
       {
         "Name": "request",
         "Type": "Backend.Controllers.PickRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Backend.Controllers.InventoryController",
+    "Method": "GetInventory",
+    "RelativePath": "inventory/product/{productId}/location/{locationId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "locationId",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],

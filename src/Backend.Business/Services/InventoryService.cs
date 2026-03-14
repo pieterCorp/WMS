@@ -7,9 +7,15 @@ using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using System.Linq;
 
+using Backend.Data;
+using Backend.Data.Models;
+using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
+using System.Linq;
+
 namespace Backend.Business.Services
 {
-    public class InventoryService
+    public class InventoryService : IInventoryService
     {
         private readonly WarehouseDbContext _context;
         public InventoryService(WarehouseDbContext context)
