@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-public class WarehouseWebApplicationFactory : WebApplicationFactory<Backend.Api.Program>
+public class WarehouseWebApplicationFactory : WebApplicationFactory<Program>
 {
     private readonly string _dbInstanceName;
 

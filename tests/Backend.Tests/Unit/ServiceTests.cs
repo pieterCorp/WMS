@@ -70,7 +70,7 @@ public class PickServiceTests
         using (var context = new WarehouseDbContext(options))
         {
             var service = new PickService(context);
-            await Assert.ThrowsAsync<Exception>(() => service.ConfirmPick("ORD-001", "123456789", 5, 2));
+            await Assert.ThrowsAsync<InvalidOperationException>(() => service.ConfirmPick("ORD-001", "123456789", 5, 2));
         }
     }
 

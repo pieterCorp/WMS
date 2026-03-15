@@ -1,17 +1,7 @@
 using Backend.Data;
-using Backend.Data.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks;
-using System.Linq;
-
-using Backend.Data;
-using Backend.Data.Models;
-using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks;
-using System.Linq;
 
 namespace Backend.Business.Services
 {
@@ -25,7 +15,12 @@ namespace Backend.Business.Services
         public async Task<int> GetInventory(int productId, int locationId)
         {
             var inventory = await _context.Inventory.FirstOrDefaultAsync(i => i.ProductId == productId && i.LocationId == locationId);
-            return inventory?.Quantity ?? 0;
+            if (inventory == null)
+            {
+                throw new KeyNotFoundException("Inventory not found");
+            }
+
+            return inventory.Quantity;
         }
         public async Task<bool> ValidateRackSlot(int productId, int rack, int slot)
         {
