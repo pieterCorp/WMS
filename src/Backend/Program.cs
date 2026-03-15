@@ -1,4 +1,5 @@
 using Backend.Data;
+using Backend.Business.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,9 +13,9 @@ if (!builder.Environment.IsEnvironment("Testing"))
     builder.Services.AddEndpointsApiExplorer();
 }
 
-builder.Services.AddScoped<Backend.Business.Services.PickService>();
-builder.Services.AddScoped<Backend.Business.Services.InventoryService>();
-builder.Services.AddScoped<Backend.Business.Services.OrderService>();
+builder.Services.AddScoped<IPickService, PickService>();
+builder.Services.AddScoped<IInventoryService, InventoryService>();
+builder.Services.AddScoped<IOrderService, OrderService>();
 
 // Register DbContext - use InMemory for Testing, SqlServer for others
 if (builder.Environment.IsEnvironment("Testing"))

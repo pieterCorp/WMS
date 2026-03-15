@@ -3,15 +3,50 @@
 .squad/log/
 .squad/decisions/inbox/
 .squad/sessions/
+
 # Squad: SubSquad activation file (local to this machine)
 .squad-workstream
+
+# Visual Studio
 .vs/
+*.user
+*.rsuser
+*.suo
+*.userosscache
+*.sln.docstates
+*.vsidx
+*.DotSettings.user
+_ReSharper*/
+
+# .NET build output
 **/bin/
 **/obj/
-*.user
-*.suo
+**/publish/
+
+# Test output
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+coverage/
+coverage-*/
+BenchmarkDotNet.Artifacts/
+
+# Packages
+*.nupkg
+*.snupkg
+
+# Local databases and logs
 *.mdf
 *.log
-*.vsidx
+
+# Editors
+.idea/
+.vscode/
+
+# OS files
+Thumbs.db
+.DS_Store
+
 /tests/Backend.Tests/bin/
 /tests/Backend.Tests/obj/
