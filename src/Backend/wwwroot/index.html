@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WMS Dashboard</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --success: #16a34a;
+            --danger: #dc2626;
+            --bg: #f1f5f9;
+            --card: #ffffff;
+            --text: #1e293b;
+            --muted: #64748b;
+            --border: #e2e8f0;
+            --radius: 8px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        header {
+            background: var(--primary);
+            color: #fff;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,.1);
+        }
+
+        header svg { flex-shrink: 0; }
+        header h1 { font-size: 1.25rem; font-weight: 600; }
+
+        .container {
+            max-width: 960px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,.06);
+        }
+
+        .card h2 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card h2 .badge {
+            font-size: 0.7rem;
+            background: var(--primary);
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 99px;
+            font-weight: 500;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            align-items: end;
+        }
+
+        .form-group { display: flex; flex-direction: column; gap: 0.25rem; }
+        .form-group label { font-size: 0.8rem; font-weight: 500; color: var(--muted); }
+        .form-group input {
+            padding: 0.5rem 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            font-size: 0.9rem;
+            width: 160px;
+        }
+
+        .form-group input:focus { outline: 2px solid var(--primary); outline-offset: -1px; border-color: var(--primary); }
+
+        button {
+            padding: 0.5rem 1.25rem;
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            border-radius: var(--radius);
+            font-size: 0.9rem;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background .15s;
+        }
+
+        button:hover { background: var(--primary-dark); }
+        button:disabled { opacity: .5; cursor: not-allowed; }
+
+        button.success { background: var(--success); }
+        button.success:hover { background: #15803d; }
+
+        .result {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: var(--bg);
+            border-radius: var(--radius);
+            font-size: 0.85rem;
+            min-height: 2rem;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .result.empty { color: var(--muted); font-style: italic; }
+        .result.error { color: var(--danger); background: #fef2f2; }
+
+        table { width: 100%; border-collapse: collapse; margin-top: 0.75rem; font-size: 0.85rem; }
+        th, td { text-align: left; padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--border); }
+        th { font-weight: 600; color: var(--muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: .04em; }
+
+        .status-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 99px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .status-pending { background: #fef3c7; color: #92400e; }
+        .status-complete { background: #dcfce7; color: #166534; }
+
+        .hint { font-size: 0.78rem; color: var(--muted); margin-top: 0.5rem; }
+
+        @media (max-width: 600px) {
+            .form-row { flex-direction: column; }
+            .form-group input { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+        <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+        <line x1="12" y1="22.08" x2="12" y2="12"/>
+    </svg>
+    <h1>Warehouse Management System</h1>
+</header>
+
+<div class="container">
+
+    <!-- Order Lookup -->
+    <div class="card">
+        <h2>📦 Order Lookup <span class="badge">GET</span></h2>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="orderId">Order ID</label>
+                <input type="text" id="orderId" placeholder="ORD-10452" />
+            </div>
+            <button onclick="lookupOrder()">Look Up</button>
+        </div>
+        <div id="orderResult" class="result empty">Enter an order ID and click Look Up</div>
+        <p class="hint">Seeded orders: <strong>ORD-10452</strong>, <strong>ORD-10453</strong></p>
+    </div>
+
+    <!-- Inventory Check -->
+    <div class="card">
+        <h2>🏷️ Inventory Check <span class="badge">GET</span></h2>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="productId">Product ID</label>
+                <input type="number" id="productId" placeholder="1" value="1" />
+            </div>
+            <div class="form-group">
+                <label for="locationId">Location ID</label>
+                <input type="number" id="locationId" placeholder="1" value="1" />
+            </div>
+            <button onclick="checkInventory()">Check</button>
+        </div>
+        <div id="inventoryResult" class="result empty">Enter IDs and click Check</div>
+        <p class="hint">Seeded: Product 1 @ Location 1 (qty 5), Product 2 @ Location 2 (qty 10)</p>
+    </div>
+
+    <!-- Pick Confirmation -->
+    <div class="card">
+        <h2>✅ Confirm Pick <span class="badge">POST</span></h2>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="pickOrderId">Order ID</label>
+                <input type="text" id="pickOrderId" placeholder="ORD-10452" />
+            </div>
+            <div class="form-group">
+                <label for="pickBarcode">Product Barcode</label>
+                <input type="text" id="pickBarcode" placeholder="5401234567890" />
+            </div>
+            <div class="form-group">
+                <label for="pickRack">Rack</label>
+                <input type="number" id="pickRack" placeholder="7" value="7" />
+            </div>
+            <div class="form-group">
+                <label for="pickSlot">Slot</label>
+                <input type="number" id="pickSlot" placeholder="3" value="3" />
+            </div>
+            <button class="success" onclick="confirmPick()">Confirm Pick</button>
+        </div>
+        <div id="pickResult" class="result empty">Fill in the fields and click Confirm Pick</div>
+        <p class="hint">Use barcode <strong>5401234567890</strong> (USB Cable) with Rack 7 / Slot 3 for ORD-10452</p>
+    </div>
+
+</div>
+
+<script>
+    const API = '/api';
+
+    function setResult(id, content, isError) {
+        const el = document.getElementById(id);
+        el.className = 'result' + (isError ? ' error' : '');
+        if (typeof content === 'string') {
+            el.textContent = content;
+        } else {
+            el.textContent = '';
+            el.appendChild(content);
+        }
+    }
+
+    async function lookupOrder() {
+        const orderId = document.getElementById('orderId').value.trim();
+        if (!orderId) { setResult('orderResult', 'Please enter an Order ID.', true); return; }
+
+        setResult('orderResult', 'Loading…', false);
+        try {
+            const res = await fetch(`${API}/orders/${encodeURIComponent(orderId)}`);
+            if (!res.ok) { setResult('orderResult', `Not found (HTTP ${res.status})`, true); return; }
+
+            const data = await res.json();
+            const items = data.Items ?? data.items ?? [];
+
+            if (items.length === 0) {
+                setResult('orderResult', `Order ${data.OrderId ?? data.orderId} — no items`, false);
+                return;
+            }
+
+            const table = document.createElement('table');
+            table.innerHTML = `
+                <thead><tr><th>Product</th><th>SKU</th><th>Location</th><th>Qty</th></tr></thead>
+                <tbody>${items.map(i => `
+                    <tr>
+                        <td>${esc(i.Product ?? i.product)}</td>
+                        <td>${esc(i.Sku ?? i.sku)}</td>
+                        <td>${esc(i.Location ?? i.location)}</td>
+                        <td>${i.Quantity ?? i.quantity}</td>
+                    </tr>`).join('')}
+                </tbody>`;
+            setResult('orderResult', table, false);
+        } catch (e) {
+            setResult('orderResult', `Error: ${e.message}`, true);
+        }
+    }
+
+    async function checkInventory() {
+        const pid = document.getElementById('productId').value.trim();
+        const lid = document.getElementById('locationId').value.trim();
+        if (!pid || !lid) { setResult('inventoryResult', 'Please enter both IDs.', true); return; }
+
+        setResult('inventoryResult', 'Loading…', false);
+        try {
+            const res = await fetch(`${API}/inventory/product/${pid}/location/${lid}`);
+            if (!res.ok) { setResult('inventoryResult', `Not found (HTTP ${res.status})`, true); return; }
+
+            const data = await res.json();
+            const qty = data.Quantity ?? data.quantity ?? 0;
+            setResult('inventoryResult', `Quantity on hand: ${qty}`, false);
+        } catch (e) {
+            setResult('inventoryResult', `Error: ${e.message}`, true);
+        }
+    }
+
+    async function confirmPick() {
+        const orderId = document.getElementById('pickOrderId').value.trim();
+        const barcode = document.getElementById('pickBarcode').value.trim();
+        const rack = parseInt(document.getElementById('pickRack').value, 10);
+        const slot = parseInt(document.getElementById('pickSlot').value, 10);
+
+        if (!orderId || !barcode) { setResult('pickResult', 'Please fill in all fields.', true); return; }
+
+        setResult('pickResult', 'Submitting…', false);
+        try {
+            const res = await fetch(`${API}/pick`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ OrderId: orderId, ProductBarcode: barcode, Rack: rack, Slot: slot })
+            });
+
+            if (!res.ok) {
+                const status = res.status;
+                const hint = status === 404 ? 'Order not found' : status === 400 ? 'Validation failed (already picked or wrong location?)' : `HTTP ${status}`;
+                setResult('pickResult', `Pick failed — ${hint}`, true);
+                return;
+            }
+
+            const data = await res.json();
+            setResult('pickResult', `Pick confirmed! Updated order:\n${JSON.stringify(data, null, 2)}`, false);
+        } catch (e) {
+            setResult('pickResult', `Error: ${e.message}`, true);
+        }
+    }
+
+    function esc(s) {
+        const d = document.createElement('div');
+        d.textContent = s ?? '';
+        return d.innerHTML;
+    }
+</script>
+
+</body>
+</html>

@@ -7,7 +7,6 @@ namespace Backend.Controllers;
 [ApiController]
 [Route("orders")]
 [Route("api/orders")]
-[Route("api/[controller]")]
 public class OrdersController : ControllerBase
 {
     private readonly IOrderService _orderService;

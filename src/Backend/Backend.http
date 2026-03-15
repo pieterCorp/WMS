@@ -4,3 +4,9 @@ GET {{Backend_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
+
+@productId=0
+@locationId=0
+GET {{Backend_HostAddress}}/api/inventory/product/{{productId}}/location/{{locationId}}
+
+###
